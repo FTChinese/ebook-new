@@ -1426,11 +1426,13 @@ function openbook() {
             $(this).find('.articleinfo .headline').html(newheadline.replace(/与(.*)共进.*/g,'$1'));
         }
         $(this).find('.flowedContent .datestamp').remove();        
-        if ($(this).find('.contentcategory').length>0){contentpage = contentpage+1;}
+        if ($(this).find('.contentcategory').length>0){
+            contentpage = contentpage+1;
+        }
         $(this).attr('n1',i);
         if ($(this).attr('topic') && $(this).attr('topic') !== '' && $(this).attr('topic') !== currenttopic) {
             currenttopic = $(this).attr('topic');
-            if (i>0 && currenttopic !== '目录'&& currenttopic !== '记分卡' && contentpage === 1 && $(this).find('.contentcategory').length === 0) {
+            if (i>0 && currenttopic !== '目录' && currenttopic !== '记分卡' && contentpage === 1 && $(this).find('.contentcategory').length === 0) {
                 $('#allcontent .contentcategory').append('<p class="category Section'+i+'" n1target='+i+' onclick="jumptoarticle('+i+',0)">'+currenttopic+'</p>');
 				if (currenttopic !== '目录') {
 					$('#allcontent ul.navigation').append('<li class="notouchall notouch section_'+i+'" onclick="scrollToSection('+i+')">'+currenttopic+'</li>');
@@ -1483,12 +1485,15 @@ function openbook() {
         } else if ($(this).find('.excerpt .lead,.article .lead,.page .lead').length>0) {
             lead = '<div class = contentlead>'+$(this).find('.excerpt .lead,.article .lead,.page .lead').eq(0).html()+'</div>';
         }
-        if ($(this).attr('title') && $(this).attr('title') !== '') {
-            $('#allcontent .contentcategory').append('<div class=contentheadline n1target = '+i+' onclick="jumptoarticle('+i+',0)">'+headshotImg+'<b>'+$(this).attr('title')+'</b>'+lead+'<div class=clearfloat></div></div>');
-            //alert ($(this).attr('title'));
-        } else if ($(this).find('.excerpt .headline,.article .headline,.page .headline').length>0 && i>0 && contentpage === 1 && $(this).find('.contentcategory').length === 0) {
-            $('#allcontent .contentcategory').append('<div class=contentheadline n1target = '+i+' onclick="jumptoarticle('+i+',0)">'+headshotImg+'<b>'+$(this).find('.headline').html()+'</b>'+lead+'<div class=clearfloat></div></div>');
-            //alert ($(this).find('.headline').html());
+        // MARK: 只有目录页后面的页面才需要显示在目录中
+        if (i>contentpage) {
+            if ($(this).attr('title') && $(this).attr('title') !== '') {
+                $('#allcontent .contentcategory').append('<div class=contentheadline n1target = '+i+' onclick="jumptoarticle('+i+',0)">'+headshotImg+'<b>'+$(this).attr('title')+'</b>'+lead+'<div class=clearfloat></div></div>');
+                //alert ($(this).attr('title'));
+            } else if ($(this).find('.excerpt .headline,.article .headline,.page .headline').length>0 && i>0 && contentpage === 1 && $(this).find('.contentcategory').length === 0) {
+                $('#allcontent .contentcategory').append('<div class=contentheadline n1target = '+i+' onclick="jumptoarticle('+i+',0)">'+headshotImg+'<b>'+$(this).find('.headline').html()+'</b>'+lead+'<div class=clearfloat></div></div>');
+                //alert ($(this).find('.headline').html());
+            }
         }
         //alert (lead);
         
