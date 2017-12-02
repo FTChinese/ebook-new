@@ -5,14 +5,6 @@
 
 
 
-@-webkit-keyframes wave {
-  from{
-      background-position:0 5px;
-  }
-  to{
-      background-position:47px 5px;
-  }
-}
 @keyframes wave {
   from{
       background-position:0 5px;
@@ -22,63 +14,30 @@
   }
 }
 .animated.wave {
-    -webkit-animation-name: wave;
             animation-name: wave;
-    -webkit-animation-timing-function: linear;
             animation-timing-function: linear;
 }
 
-@-webkit-keyframes drift {
-  from{-webkit-transform:translateX(-300px);}
-  to{-webkit-transform:translateX(1600px);}
-}
 @keyframes drift {
   from{-webkit-transform:translateX(-300px);}
   to{-webkit-transform:translateX(1600px);}
 }
-@-webkit-keyframes rotate {
-  0%    { -webkit-transform: rotate(0deg); }
-  100%  { -webkit-transform: rotate(360deg); }
-}
-@-webkit-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
-@keyframes rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
-@-webkit-keyframes bounce {
-  0%, 100% { -webkit-transform: scale(0.0) }
-  50% { -webkit-transform: scale(1.0) }
-}
+@keyframes rotate { 100% { transform: rotate(360deg);}}
 
 @keyframes bounce {
   0%, 100% { 
     transform: scale(0.0);
-    -webkit-transform: scale(0.0);
   } 50% { 
     transform: scale(1.0);
-    -webkit-transform: scale(1.0);
   }
 }
 
-@-webkit-keyframes scroll {
-  from{
-      background-position:0 0;
-  }
-  to{
-      background-position:0 -300px;
-  }
-}
 @keyframes scroll {
   from{
       background-position:0 0;
   }
   to{
       background-position:0 -300px;
-  }
-}
-@-webkit-keyframes flick {
-  0%, 60%, 100%{
-      opacity: 0.3;
-  }
-  30%{
-      opacity: 1;
   }
 }
 @keyframes flick {
@@ -91,7 +50,7 @@
 }
 
 .spinning {
-  -webkit-animation: rotate 3s infinite linear;animation: rotate 3s infinite linear;
+animation: rotate 3s infinite linear;
 }
 /* Animation */
 
